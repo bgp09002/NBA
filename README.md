@@ -21,4 +21,10 @@ The popularity and usage of the 3 point shot has risen substantially in the NBA 
 
 ### Data Gathering
 Data was collected using three different methodologies:
-1. [Player Statistics](
+1. [Player Statistics](https://github.com/bgp09002/NBA/blob/master/1.%20Data%20Gathering/Get%20Player%20Stats.ipynb)
+    - The library `basketball_reference_web_scraper` was used. This library scrapes data from the website [basketball-reference.com](https://www.basketball-reference.com/), which houses NBA statistics dating back to the 1940s.
+2. [Player Salaries](https://github.com/bgp09002/NBA/blob/master/1.%20Data%20Gathering/Get%20Player%20Salaries.ipynb)
+    - The library `selenium` was used to scrape player name and salary data by year from [hoopshype.com](https://hoopshype.com/salaries/players/).
+3. [Team Statistics](https://github.com/bgp09002/NBA/blob/master/1.%20Data%20Gathering/Get%20All%20Teams%20Stats.ipynb)
+    - The library `nba_api` was used. This library scrapes data from the [NBA's official website](https://stats.nba.com/)
+    
