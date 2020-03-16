@@ -82,8 +82,37 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
         - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
 ![LogRegFeatureImportance2.png](./Images/LogRegFeatureImportance2.png)        
 
+### Data Trends
+![FG3AperFG2Aplayoffs.png](./Images/FG3AperFG2Aplayoffs.png)
+Ratio of 3 point attempts to 2 point attempts is steadily trending upwards by year. NBA teams are finding value in more 3 point shots at the expense of 2 point shots. Note how playoff teams are almost always higher.
+
+![ShootingPercentPlayoff.png](./Images/ShootingPercentPlayoff.png)
+It makes sense that playoff teams have higher shooting percentages than non-playoff teams. An interesting note is how 2 point shooting percentage is increasing. Likely due to teams substituting 2 point shots further from the basket for 3 point shots.
+
+![FG3AperFG2Ateams.png](./Images/FG3AperFG2Ateams.png)
+The Houston Rockets are accelerating much faster than the rest of the league. They were the first time to have more 3 point shots in a season than 2 point shots.
+
+|                   | All Teams | Top Ten FG3A/FG2A (All Seasons) | Top Ten FG3A/FG2A (Since 2010) |
+|-------------------|-----------|---------------------------------|--------------------------------|
+| Make Playoffs     | 57.35%    | 70.28%                          | 72.22%                         |
+| Finals Appearance | 7.11%     | 11.67%                          | 16.67%                         |
+| NBA Championship  | 3.55%     | 5.28%                           | 6.67%                          |
+
+This shows how teams that are top ten in the league over that season in `FG3A/FG2A` find more success than the rest of the league. This is shown even more apparently since 2010 as the league changes to more 3 point shooting.
+
 ### Limitations
 A large limitation to this project is the inability to get totals of specific locations on the court of shot selection. While the most important differentiator is whether or not a given shot was a 3 pointer or a 2 pointer, it would be helpful to see distributions of shots from specific spots on the court or specific distances away from the basket. One major outcome of the move towards analytics in the NBA has been the near elimination of mid-range shots (2 pointers that are farther away from the basket) to make way for higher percentage shots closer to the basket or 3 pointers which are slightly lower percentage shots but give the team 1 extra point.
 
-## Conclusions and Future Work
-Interpretting the feature importance for each successful model is the major factor in determining the answer to whether or not 3 point shots are more representative for success than 2 point shots. As shown in the feature importance images, both models 2 strongest positive influences are `FG2M_PER_GP` and `FG3M_PER_GP` while both models also share the 2 strongest negative influences of `FG2A_PER_GP` and `FG3A_PER_GP`, all in the same order. When looking at just the Logistic model, `FG2M_PER_GP` seems to have a significant advantage. While that could be interpretted to represent 2 point shots are more important, I believe it's cancelled out by how `FG2A_PER_GP` is also much more of a negative influence. With the viewpoint that 
+## Conclusions and Further Points
+Interpretting the feature importance for each successful model is the major factor in determining the answer to whether or not 3 point shots are more representative for success than 2 point shots. Viewing the strongest models that included the most features for both Linear Regression and Logistic Regression, both models 2 strongest positive influences are `FG2M_PER_GP` and `FG3M_PER_GP` while both models also share the 2 strongest negative influences of `FG2A_PER_GP` and `FG3A_PER_GP`, all in the same order. When looking at just the Logistic model, `FG2M_PER_GP` seems to have a significant advantage. While that could be interpretted to represent 2 point shots are more important, I believe it's cancelled out by how `FG2A_PER_GP` is also much more of a negative influence. This makes it hard to actually gain anything from viewing them.
+
+The model that had the best combination of accuracy and interpretability was Logistic Regression attempt 4, though its results were also mirrored in its Linear Regression counterpart of the same features. These models show that `FG2A_PER_GP` have a stronger negative influence on each model than `FG3A_PER_GP`. This leads me to believe that 3 pointers are more important to success due to more attempts not contributing as negatively as more 2 pointer attempts. I can agree with the NBA's move towards implementing more of a focus on 3 point shooting. Conceptually, I would recommend teams further pushing their `FG3A/FG2A` since increasing the relation between each shot should help. This is directly in line with the graphs and table in the Data Trends section above. 
+
+With this information being the case, it makes sense that people who are good at 3 point shooting would be appearing more frequently in the NBA, which is shown in the graph below.
+![CountofShooterandfrequent.png](./Images/CountofShooterandfrequent.png)
+
+But beyond them appearing more frequently, it would also make sense if NBA teams were valuing those players higher and giving them higher salaries. The graphs below show 2 different ways to slice NBA 3 point shooters, those over 35% shooting and those in the top 20 of 3 pointers made. Neither seems to show that large of a bump in their salaries. As time progresses, I would guess that these players will be valued higher.
+![avgsalarymostmakes.png](./Images/avgsalarymostmakes.png)
+![avgsalaryshooterpercent.png](./Images/avgsalaryshooterpercent.png)
+
+To further test this project, I would like to analyze it with a few more years of data as the NBA continues the current trend it's on. It would be interesting to see if there is a breaking point when they start to level off their `FG3A/FG2A` to reach the optimal point. 
