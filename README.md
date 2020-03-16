@@ -53,6 +53,12 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
         - These values are much higher and represent a strong model
         - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
 ![LinearRegFeatureImportance.png](./Images/LinearRegFeatureImportance.png)
+3. Third attempt included: `FG2A_PER_GP`, `FG3A_PER_GP`, `FTA_PER_GP`, `OREB_PER_GP`, `DREB_PER_GP`, `AST_PER_GP` ,`PF_PER_GP`, `STL_PER_GP`, `TOV_PER_GP`, `BLK_PER_GP`
+    - Train R<sup>2</sup>: 0.6248
+    - Test R<sup>2</sup>: 0.6649
+        - These values are lower than the prior attempt, but give an easier differentiation between 3 point shots and 2 point shots a team takes
+        - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
+![LinearRegFeatureImportance2.png](./Images/LinearRegFeatureImportance2.png)
 
 **Logistic Regression for Playoffs Classification**:
 1. First attempt was trying to classify whether or not teams made the playoffs. Features included: `FG2_PCT`, `FG3_PCT`, `FT_PCT`, `FG2M_PER_GP`, `FG2A_PER_GP`, `FG3M_PER_GP`, `FG3A_PER_GP`, `FTM_PER_GP`, `FTA_PER_GP`, `OREB_PER_GP`, `DREB_PER_GP`, `AST_PER_GP`, `PF_PER_GP`, `STL_PER_GP`, `TOV_PER_GP`, `BLK_PER_GP`.
@@ -69,9 +75,15 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
     - Train Sensitivity: 0.0741
     - Test Sensitivity: 0.1111
         - Not a good model to use for any clarrification
+4. Fourth attempt included: `FG2A_PER_GP`, `FG3A_PER_GP`, `FTA_PER_GP`, `OREB_PER_GP`, `DREB_PER_GP`, `AST_PER_GP` ,`PF_PER_GP`, `STL_PER_GP`, `TOV_PER_GP`, `BLK_PER_GP`
+    - Train Accuracy: 0.8142
+    - Test Accuracy: 0.7717
+        - This is lower accuracy than the first attempt, but still accurate while being easier to interpret, with there being only one 3 point shot variable and one 2 point shot variable
+        - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
+![LogRegFeatureImportance2.png](./Images/LogRegFeatureImportance2.png)        
 
 ### Limitations
 A large limitation to this project is the inability to get totals of specific locations on the court of shot selection. While the most important differentiator is whether or not a given shot was a 3 pointer or a 2 pointer, it would be helpful to see distributions of shots from specific spots on the court or specific distances away from the basket. One major outcome of the move towards analytics in the NBA has been the near elimination of mid-range shots (2 pointers that are farther away from the basket) to make way for higher percentage shots closer to the basket or 3 pointers which are slightly lower percentage shots but give the team 1 extra point.
 
 ## Conclusions and Future Work
-Here's where I'll talk about my conclusions!!!
+Interpretting the feature importance for each successful model is the major factor in determining the answer to whether or not 3 point shots are more representative for success than 2 point shots. As shown in the feature importance images, both models 2 strongest positive influences are `FG2M_PER_GP` and `FG3M_PER_GP` while both models also share the 2 strongest negative influences of `FG2A_PER_GP` and `FG3A_PER_GP`, all in the same order. When looking at just the Logistic model, `FG2M_PER_GP` seems to have a significant advantage. While that could be interpretted to represent 2 point shots are more important, I believe it's cancelled out by how `FG2A_PER_GP` is also much more of a negative influence. With the viewpoint that 
