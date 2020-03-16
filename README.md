@@ -67,11 +67,11 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
         - Good accuracy, and since the playoffs class is relatively evenly split (16 out of 30 teams make the playoffs each season) accuracy is a good measure.
         - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
 ![LogRegFeatureImportance.png](./Images/LogRegFeatureImportance.png)
-2. Second attempt was trying to classify whether or not teams made the NBA finals, meaning they won their respective division and had to play the other division winner to win the NBA championship. Same features as the first attempt were used. Train accuracy was 0.9315, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
+2. Second attempt was trying to classify whether or not teams won the NBA finals, being crowned the best team that year. Same features as the first attempt were used. Train accuracy was 0.9657, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
     - Train Sensitivity: 0.0741
     - Test Sensitivity: 0.1111
         - Not a good model to use for any clarrification
-3. Third attempt was trying to classify whether or not teams made the NBA finals, meaning they won their respective division and had to play the other division winner to win the NBA championship. Same features as the first attempt were used. Train accuracy was 0.9657, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
+3. Third attempt was trying to classify whether or not teams made the NBA finals, meaning they won their respective division and had to play the other division winner to win the NBA championship. Same features as the first attempt were used. Train accuracy was 0.9315, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
     - Train Sensitivity: 0.0741
     - Test Sensitivity: 0.1111
         - Not a good model to use for any clarrification
@@ -84,12 +84,15 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
 
 ### Data Trends
 ![FG3AperFG2Aplayoffs.png](./Images/FG3AperFG2Aplayoffs.png)
+
 Ratio of 3 point attempts to 2 point attempts is steadily trending upwards by year. NBA teams are finding value in more 3 point shots at the expense of 2 point shots. Note how playoff teams are almost always higher.
 
 ![ShootingPercentPlayoff.png](./Images/ShootingPercentPlayoff.png)
+
 It makes sense that playoff teams have higher shooting percentages than non-playoff teams. An interesting note is how 2 point shooting percentage is increasing. Likely due to teams substituting 2 point shots further from the basket for 3 point shots.
 
 ![FG3AperFG2Ateams.png](./Images/FG3AperFG2Ateams.png)
+
 The Houston Rockets are accelerating much faster than the rest of the league. They were the first time to have more 3 point shots in a season than 2 point shots.
 
 |                   | All Teams | Top Ten FG3A/FG2A (All Seasons) | Top Ten FG3A/FG2A (Since 2010) |
@@ -109,10 +112,13 @@ Interpretting the feature importance for each successful model is the major fact
 The model that had the best combination of accuracy and interpretability was Logistic Regression attempt 4, though its results were also mirrored in its Linear Regression counterpart of the same features. These models show that `FG2A_PER_GP` have a stronger negative influence on each model than `FG3A_PER_GP`. This leads me to believe that 3 pointers are more important to success due to more attempts not contributing as negatively as more 2 pointer attempts. I can agree with the NBA's move towards implementing more of a focus on 3 point shooting. Conceptually, I would recommend teams further pushing their `FG3A/FG2A` since increasing the relation between each shot should help. This is directly in line with the graphs and table in the Data Trends section above. 
 
 With this information being the case, it makes sense that people who are good at 3 point shooting would be appearing more frequently in the NBA, which is shown in the graph below.
+
 ![CountofShooterandfrequent.png](./Images/CountofShooterandfrequent.png)
 
 But beyond them appearing more frequently, it would also make sense if NBA teams were valuing those players higher and giving them higher salaries. The graphs below show 2 different ways to slice NBA 3 point shooters, those over 35% shooting and those in the top 20 of 3 pointers made. Neither seems to show that large of a bump in their salaries. As time progresses, I would guess that these players will be valued higher.
+
 ![avgsalarymostmakes.png](./Images/avgsalarymostmakes.png)
+
 ![avgsalaryshooterpercent.png](./Images/avgsalaryshooterpercent.png)
 
 To further test this project, I would like to analyze it with a few more years of data as the NBA continues the current trend it's on. It would be interesting to see if there is a breaking point when they start to level off their `FG3A/FG2A` to reach the optimal point. 
