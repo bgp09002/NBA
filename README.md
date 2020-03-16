@@ -44,9 +44,9 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
 
 **Linear Regression for Wins**:
 1. My first attempt was trying to see if only using offensive shooting statistics would work in order to keep everything in context. I modeled using: `FG2_PCT`,`FG3_PCT`,`FT_PCT`,`FG2A_PER_GP`,`FG3A_PER_GP`,`FG3A/FG2A`.
-- Train R<sup>2</sup>: 0.4028
-- Test R<sup>2</sup>: 0.2947
-    - These values did not seem high enough and the model seems to be relatively overfit to the training data, so I didn't want to make any conclusions from it until I tried 
+    - Train R<sup>2</sup>: 0.4028
+    - Test R<sup>2</sup>: 0.2947
+        - These values did not seem high enough and the model seems to be relatively overfit to the training data, so I didn't want to make any conclusions from it until I tried 
 
 ### Limitations
 A large limitation to this project is the inability to get totals of specific locations on the court of shot selection. While the most important differentiator is whether or not a given shot was a 3 pointer or a 2 pointer, it would be helpful to see distributions of shots from specific spots on the court or specific distances away from the basket. One major outcome of the move towards analytics in the NBA has been the near elimination of mid-range shots (2 pointers that are farther away from the basket) to make way for higher percentage shots closer to the basket or 3 pointers which are slightly lower percentage shots but give the team 1 extra point.
