@@ -43,7 +43,7 @@ All of the data gathered from the three methodologies above was vast and full, b
 While my goal is to determine whether 3 point shots or 2 point shots are more important in, modeling was used a source to target feature importance. Both linear regression and logistic regression modeling was used. Linear regression was used in order to predict regular season wins by team. Logistic regression was used to predict whether teams made the playoffs, made the NBA finals, or won the NBA championship.
 
 **Linear Regression for Wins**:
-1. My first attempt was trying to see if only using offensive shooting statistics would work in order to keep everything in context. I modeled using: `FG2_PCT`, `FG3_PCT`, `FT_PCT`, `FG2A_PER_GP`, `FG3A_PER_GP`, `FG3A/FG2A`.
+1. First attempt was trying to see if only using offensive shooting statistics would work in order to keep everything in context. I modeled using: `FG2_PCT`, `FG3_PCT`, `FT_PCT`, `FG2A_PER_GP`, `FG3A_PER_GP`, `FG3A/FG2A`.
     - Train R<sup>2</sup>: 0.4028
     - Test R<sup>2</sup>: 0.2947
         - These values did not seem high enough and the model is overfit to the training data, so I didn't want to make any conclusions from it since I am able to add more features
@@ -51,7 +51,24 @@ While my goal is to determine whether 3 point shots or 2 point shots are more im
     - Train R<sup>2</sup>: 0.8049
     - Test R<sup>2</sup>: 0.8293
         - These values are much higher and represent a strong model
+        - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
 ![LinearRegFeatureImportance.png](./Images/LinearRegFeatureImportance.png)
+
+**Logistic Regression for Playoffs Classification**:
+1. First attempt was trying to classify whether or not teams made the playoffs. Features included: `FG2_PCT`, `FG3_PCT`, `FT_PCT`, `FG2M_PER_GP`, `FG2A_PER_GP`, `FG3M_PER_GP`, `FG3A_PER_GP`, `FTM_PER_GP`, `FTA_PER_GP`, `OREB_PER_GP`, `DREB_PER_GP`, `AST_PER_GP`, `PF_PER_GP`, `STL_PER_GP`, `TOV_PER_GP`, `BLK_PER_GP`.
+    - Train Accuracy: 0.8459
+    - Test Accuracy: 0.8307
+        - Good accuracy, and since the playoffs class is relatively evenly split (16 out of 30 teams make the playoffs each season) accuracy is a good measure.
+        - The below picture shows the scaled coefficients of each feature from this model that also has a P Value below 0.05
+![LogRegFeatureImportance.png](./Images/LogRegFeatureImportance.png)
+2. Second attempt was trying to classify whether or not teams made the NBA finals, meaning they won their respective division and had to play the other division winner to win the NBA championship. Same features as the first attempt were used. Train accuracy was 0.9315, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
+    - Train Sensitivity: 0.0741
+    - Test Sensitivity: 0.1111
+        - Not a good model to use for any clarrification
+3. Third attempt was trying to classify whether or not teams made the NBA finals, meaning they won their respective division and had to play the other division winner to win the NBA championship. Same features as the first attempt were used. Train accuracy was 0.9657, which appears good, but was not a good measure of a successful model in this circumstance due to there being a significant disparity between teams who did not make the NBA finals and those who did.
+    - Train Sensitivity: 0.0741
+    - Test Sensitivity: 0.1111
+        - Not a good model to use for any clarrification
 
 ### Limitations
 A large limitation to this project is the inability to get totals of specific locations on the court of shot selection. While the most important differentiator is whether or not a given shot was a 3 pointer or a 2 pointer, it would be helpful to see distributions of shots from specific spots on the court or specific distances away from the basket. One major outcome of the move towards analytics in the NBA has been the near elimination of mid-range shots (2 pointers that are farther away from the basket) to make way for higher percentage shots closer to the basket or 3 pointers which are slightly lower percentage shots but give the team 1 extra point.
